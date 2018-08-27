@@ -1,0 +1,31 @@
+server:
+  port: 9707
+
+logging:
+  level:
+    root: debug
+
+spring:
+  datasource:
+#    url: jdbc:mysql://mysql.tyutzgl.cn:3306/pepsi_blog?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/pepsi_blog?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      max-wait-millis: 10000
+      min-idle: 5
+      initial-size: 5
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:templates/
+    cache: false
+
+
+mybatis:
+  type-aliases-package: cn.tyut.blog.dao
+  mapper-locations: classpath:mapping/*.xml
+
+
+

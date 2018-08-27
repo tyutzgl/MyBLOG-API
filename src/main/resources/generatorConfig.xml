@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+    <classPathEntry location="E:\\mysql-connector-java-5.1.20-bin.jar"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://47.94.102.89:3306/pepsi_blog?characterEncoding=utf-8"
+                userId="root"
+                password="123456">
+        </jdbcConnection>
+
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <!-- 默认false，把JDBC decimal 和 numeric 类型解析为 Integer，
+        为 true 时把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <!-- targetPackage：生成的实体包位置，默认存放在src目录下
+             targetProject：目标工程名 -->
+
+        <!-- pojo  java模型创建器-->
+        <javaModelGenerator targetPackage="cn.tyut.blog.pojo" targetProject="src/main/java"/>
+
+        <!-- dao-xml  生成SQL map的XML文件生成器-->
+        <!--  注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），
+            或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置 -->
+        <sqlMapGenerator targetPackage="cn.tyut.blog.dao" targetProject="src/main/java"/>
+
+        <!-- dao-interface -->
+        <!-- type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+        注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.tyut.blog.dao" targetProject="src/main/java"/>
+
+
+        <!-- 配置表
+            schema：不用填写
+            tableName: 表名
+            enableCountByExample、enableSelectByExample、enableDeleteByExample、
+            enableUpdateByExample、selectByExampleQueryId：
+            去除自动生成的例子
+        -->
+        <table schema="" tableName="t_user_info"
+               enableCountByExample="false" enableSelectByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>
+        <!--<table schema="" tableName="t_file_info"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_comment"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_article"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_tags"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_article_tag"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_follow"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_user_ip"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table schema="" tableName="t_article_review"-->
+        <!--enableCountByExample="false" enableSelectByExample="false"-->
+        <!--enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"/>-->
+
+    </context>
+</generatorConfiguration>
